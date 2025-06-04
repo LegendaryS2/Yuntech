@@ -1,0 +1,559 @@
+:root { 
+    --primary-color: #2C5364;            /* 主色 */
+    --primary-color-light: #5DAE8B;      /* 亮色 */
+    --background-dark: #1B3A4B;          /* 背景暗色 */
+    --panel-light: rgba(93, 174, 139, 0.9);  /* 面板亮色 */
+    --panel-dark: rgba(44, 83, 100, 0.85);  /* 面板暗色 */
+    --text-light: #F1FFF7;               /* 文字 */
+    --accent-color: #3ECF8E;             /* 強調色 */
+    --border-radius: 12px;
+    --shadow: 0 6px 18px rgba(34, 85, 68, 0.55); /* 陰影 */
+    --shadow-hover: 0 12px 30px rgba(34, 85, 68, 0.65);
+    --transition-speed: 0.35s;
+    --panel-blur: 12px;
+}
+
+
+
+/* === 全域重設與背景 === */
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--background-dark);
+    color: var(--text-light);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* === 背景圖片 === */
+body > img {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -3;
+    filter: brightness(0.85) saturate(1.1);
+    animation: fadeInBg 1.2s ease forwards;
+}
+
+/* === 導覽列 === */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: linear-gradient(90deg, var(--primary-color), var(--primary-color-light));
+    display: grid;
+    grid-template-columns: 0.5fr 2fr 1fr;
+    align-items: center;
+    padding: 15px 30px;
+    box-sizing: border-box;
+    box-shadow: var(--shadow);
+    /* backdrop-filter: blur(var(--panel-blur));
+    animation: slideDown 0.6s ease forwards; */
+}
+
+.logo img {
+    background-color: #ffffff;
+    width: 30vw;
+    max-width: 400px;
+    min-width: 120px;
+    height: auto;
+
+    border-radius: 18px;
+    padding: 10px 20px;
+    border: 3px solid #00bfff; /* 明亮邊框 */
+    box-shadow:
+        0 0 8px rgba(0, 191, 255, 0.5),
+        0 4px 20px rgba(0, 0, 0, 0.15);  /* 藍色光暈 + 深陰影 */
+    
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+    animation: logoBounceIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    cursor: pointer;
+}
+
+/* 進場動畫：有點像彈起來 */
+@keyframes logoBounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.8) translateY(-20px);
+    }
+    60% {
+        opacity: 1;
+        transform: scale(1.1) translateY(5px);
+    }
+    100% {
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* hover：變大、發光更強 */
+.logo img:hover {
+    transform: scale(1.05);
+    box-shadow:
+        0 0 12px rgba(0, 191, 255, 0.7),
+        0 6px 30px rgba(0, 0, 0, 0.25);
+}
+
+
+
+.menu {
+    display: grid;
+    grid-template-columns: repeat(7, auto);
+    gap: 10px;
+    font-size: 18pt;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 95%;
+}
+
+.menu-space {
+    width: 0;   /* 你想要的空格寬度，可調整 */
+    height: 1px;
+    pointer-events: none;
+}
+
+.menu a {
+  text-decoration: none;
+  color: var(--text-light);
+  font-weight: 500;
+  font-size: 1.5rem;         /* 18px */
+  line-height: 1.6;            /* 更柔和 */
+  font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: color 0.3s, background-color 0.3s;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+}
+
+.menu a:hover,
+.menu a:focus-visible {
+    color: #fff;
+    background-color: var(--accent-color);
+    box-shadow: 0 0 8px var(--accent-color);
+    outline: none;
+    cursor: pointer;
+}
+
+
+.icon {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    font-size: 2rem;
+    color: var(--text-light);
+}
+
+/* 手機版（max-width 600px 以下為例）調整往左移 */
+@media (max-width: 600px) {
+  .icon {
+    margin-right: 20px; /* 增加右邊空白，整組icon往左移 */
+  }
+}
+
+/* === 標題 === */
+/* h1 {
+    color: white;
+    margin-top: 120px;
+    z-index: 10;
+    position: relative;
+    text-align: center;
+    text-shadow: 2px 2px 6px black;
+} */
+
+
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+#myCanvas {
+    background-color: #2a5; 
+}
+
+
+/* === 控制面板與下拉選單 === */
+#controls {
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+    padding: 14px 16px 0px 16px; /* 上 12px、右 16px、下 4px、左 16px */
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    z-index: 500;
+    font-size: 16px;
+    background: var(--panel-light);
+    color: #000;
+}
+
+#buttons {
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+}
+
+#osmPanel {
+    position: fixed;
+    left: 10px;
+    bottom: 190px;
+    padding: 12px 16px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    z-index: 500;
+    font-size: 16px;
+    background-color: var(--panel-dark);
+    color: var(--text-light);
+    max-width: 90vw;
+    max-height: 90vh;
+    overflow: auto;
+}
+
+#texts {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    padding: 12px 5px 6px 16px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    z-index: 500;
+    font-size: 20px;
+    max-width: 350px;
+    gap: 16px;
+    display: flex;             
+    align-items: center;        /* 垂直置中 */
+    justify-content: center;    /* 水平置中 */
+    background: var(--panel-light);
+    color: #000;
+}
+
+#texts input {
+    font-size: 24px; /* 設置輸入框文字大小 */
+    padding: 5px; /* 增加內邊距，讓輸入框更舒適 */
+    width: 65%; /* 可選：讓輸入框寬度填滿父容器 */
+    box-sizing: border-box; /* 確保內邊距不影響輸入框的總寬度 */
+}
+
+/* === 下拉選單美化 === */
+#mapSelect,
+#subMapSelect {
+    appearance: none; /* 移除原生樣式 */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: #fff;
+    border: 1.5px solid #ccc;
+    border-radius: 8px;
+    padding: 10px 36px 10px 14px;
+    font-size: 16px;
+    font-family: inherit;
+    cursor: pointer;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background-image: url("data:image/svg+xml,%3Csvg width='14' height='10' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 7L10 12L15 7' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 14px;
+}
+
+#mapSelect:hover,
+#subMapSelect:hover {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 6px rgba(0, 150, 136, 0.2);
+    background-color: #f9f9f9;
+}
+
+#mapSelect:focus,
+#subMapSelect:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(0, 150, 136, 0.3);
+}
+
+/* === 標籤 === */
+label[for="mapSelect"],
+label[for="subMapSelect"] {
+    font-size: 18px;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+
+/* === 按鈕與檔案選擇 === */
+button,
+.file-input-label {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    font-size: 16px;
+    padding: 10px 20px;
+    margin: 6px;
+    border: 1px solid var(--accent-color);
+    border-radius: 10px;
+    background-color: white;
+    color: var(--accent-color);
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+    min-width: 70px;
+    white-space: nowrap;
+    z-index: 0;
+}
+
+/* 波紋效果 - 簡化且柔和 */
+button::after,
+.file-input-label::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 160%;
+    height: 160%;
+    background: rgba(0, 0, 0, 0.05); /* 柔和灰色波紋 */
+    transform: translate(-50%, -50%) scale(0);
+    border-radius: 50%;
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.5s ease, opacity 0.8s ease;
+}
+
+button:active::after,
+.file-input-label:active::after {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+    transition: 0s;
+}
+
+/* Hover 動畫 - 優雅微動 */
+button:hover,
+.file-input-label:hover {
+    background-color: var(--accent-color);
+    color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transform: translateY(-1px);
+}
+
+/* 按壓狀態 - 無誇張下沉 */
+button:active,
+.file-input-label:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06) inset;
+}
+
+/* 聚焦狀態 - 柔光外框 */
+button:focus,
+.file-input-label:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(93, 174, 139, 0.2);
+}
+
+
+
+input[type="file"] {
+    display: none;
+}
+
+/* === 參數顯示 === */
+#kpVal {
+    margin-top: 10px;
+    color: #000;
+    font-weight: bold;
+    font-size: 16px;
+}
+.more-menu-wrap:hover #moreMenu,
+.more-menu-wrap:focus-within #moreMenu {
+    display: block;
+}
+#moreMenu {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    background: #fff;
+    border: 1px solid #ccc;
+    z-index: 1000;
+    min-width: 180px;
+    color: #222;
+    border-radius: 10px;
+    box-shadow: 0 8px 32px rgba(44,83,100,0.18);
+    font-size: 18px;
+    padding: 8px 0;
+}
+
+#moreMenu a {
+    color: #222 !important;           /* 深色字體 */
+    display: block;
+    padding: 10px 18px;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background 0.2s, color 0.2s;
+}
+
+#moreMenu a:hover {
+    background: var(--accent-color);  /* 強調底色 */
+    color: #fff !important;           /* 滑過時白字 */
+} 
+
+#shopMenu {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+
+    z-index: 2000;
+    padding: 24px 28px;
+
+    min-width: 420px;
+    min-height: 160px;
+
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+    animation: fadeInScale 0.3s ease-out;
+
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+#shopOverlay {
+    display: none;
+    position: fixed;
+    z-index: 1999;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    animation: fadeInOverlay 0.3s ease-out;
+}
+
+@keyframes fadeInScale {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+@keyframes fadeInOverlay {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+
+#announcementOverlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(6px);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#announcementBox {
+  background: linear-gradient(145deg, #ffffff, #e6e6e6); 
+  padding: 35px 45px;
+  border-radius: 20px;
+  box-shadow: 
+    0 4px 10px rgba(0, 0, 0, 0.1), 
+    0 12px 30px rgba(0, 0, 0, 0.15); 
+  max-width: 480px;
+  width: 90%;
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(2px); 
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#announcementBox:hover {
+  transform: scale(1.01);
+  box-shadow:
+    0 6px 14px rgba(0, 0, 0, 0.12),
+    0 16px 40px rgba(0, 0, 0, 0.2); 
+}
+
+#announcementBox h2 {
+  font-size: 1.5em;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+#announcementBox ol {
+  font-size: 1.1em;
+  color: #555;
+  margin-bottom: 20px;
+  line-height: 1.5;
+  text-align: left;
+  padding-left: 20px;  
+}
+
+#announcementBox li {
+  margin-bottom: 8px;  
+}
+
+#announcementBox p {
+  font-size: 1.1em;
+  color: #555;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+#announcementBox button {
+  padding: 10px 20px;
+  font-size: 1em;
+  background: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#announcementBox button:hover {
+  background: #45a049;
+}
+
+@media (max-width: 700px) {
+    .menu {
+        grid-template-columns: 1fr !important;
+        gap: 2px !important;
+        justify-items: center !important;
+    }
+    .menu > div, .more-menu-wrap {
+        font-size: 14pt !important;
+        padding: 2px 0 !important;
+    }
+    .menu a {
+        font-size: 14pt !important;
+        padding: 2px 8px !important;
+    }
+    
+}

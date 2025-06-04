@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://kit.fontawesome.com/9cd0043e49.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <nav>
+    <div class="logo">
+      <a href="index.html">
+        <img src="img/yuntech-15.png" style="height: auto;width: 400px;" alt="Yuntech Logo">
+      </a>
+    </div>
+
+<div class="menu">
+      <div class="menu-space"></div>
+      <div><a href="index.html">首頁</a></div>
+      <div>
+        <a href="#" onclick="openHelp(event)">使用說明</a>
+      </div>
+
+      <div id="helpOverlay"
+        style="display:none; position:fixed; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.4); z-index:9998;"
+        onclick="closeHelp()"></div>
+      <div id="helpBox" style="display:none; position:fixed; left:50%; top:50%; transform:translate(-50%,-50%);
+  background:#fff; padding:10px 20px 18px 20px; border-radius:16px; box-shadow:0 4px 28px #0003;
+  z-index:9999; min-width:300px; max-width:90vw; color:#222; border: 3px solid #40BFFF;">
+        <div style="text-align:right;">
+          <button onclick="closeHelp()" style="font-size:1.5em;">✖</button>
+        </div>
+        <h2 style="margin:0 0 8px 0; text-align:center;">功能介紹</h2>
+        <ul>
+          <li>首頁功能與logo功能:刷新頁面</li>
+        </ul>
+        <video controls style="width:100%;max-width:500px;margin-top:24px;">
+          <source src="video/1.mp4" type="video/mp4">
+        </video>
+        <div style="text-align:right; margin-top:24px;">
+          <button onclick="showHelpPage2()">下一頁 ▶</button>
+        </div>
+      </div>
+
+      <div id="helpBox2" style="display:none; position:fixed; left:50%; top:50%; transform:translate(-50%,-50%);
+  background:#fff; padding:10px 20px 18px 20px; border-radius:16px; box-shadow:0 4px 28px #0003;
+  z-index:9999; min-width:300px; max-width:90vw; color:#222; border: 3px solid #40BFFF;">
+        <div style="text-align:right;">
+          <button onclick="closeHelp2()" style="font-size:1.2em;">✖</button>
+        </div>
+        <h2 style="margin:0 0 8px 0; text-align:center;">商店</h2>
+        <ul>
+          <li style="font-size:22px; line-height:1.6; max-width:20em; word-break:break-all;">
+            點選商店會出現 5 款車子的樣式，你可以選擇喜歡的一
+            台樣式來跑雲科大地圖。
+          </li>
+        </ul>
+        <video controls style="width:100%;max-width:500px;margin-top:24px;">
+          <source src="video/2.mp4" type="video/mp4">
+        </video>
+        <div style="display: flex; justify-content: space-between; margin-top:16px;">
+          <button onclick="showHelpPage1()">◀ 上一頁</button>
+          <button onclick="showHelpPage3()">下一頁 ▶</button>
+        </div>
+      </div>
+
+
+      <div id="helpBox3" style="display:none; position:fixed; left:50%; top:50%; transform:translate(-50%,-50%);
+  background:#fff; padding:18px 10px; border-radius:16px; box-shadow:0 4px 28px #0003;
+  z-index:9999; min-width:300px; max-width:90vw; color:#222; border: 3px solid #40BFFF;">
+        <div style="text-align:right;">
+          <button onclick="closeHelp3()" style="font-size:1.2em;">✖</button>
+        </div>
+        <h2 style="margin:0 0 8px 0; text-align:center;">系院介紹</h2>
+        <ul>
+          <li style="font-size:22px; line-height:1.6; max-width:20em; word-break:break-all;">
+            按下更多後可以選擇你想了解的學院跟系所更多資訊，並且直接前往瀏覽
+          </li>
+        </ul>
+        <video controls style="width:100%;max-width:500px;margin-top:24px;">
+          <source src="video/3.mp4" type="video/mp4">
+        </video>
+        <div style="display: flex; justify-content: space-between; margin-top:16px;">
+          <button onclick="showHelpPage2()">◀ 上一頁</button>
+          <button onclick="showHelpPage4()">下一頁 ▶</button>
+        </div>
+      </div>
+
+      <div id="helpBox4" style="display:none; position:fixed; left:50%; top:50%; transform:translate(-50%,-50%);
+  background:#fff; padding:18px 10px; border-radius:16px; box-shadow:0 4px 28px #0003;
+  z-index:9999; min-width:300px; max-width:90vw; color:#222; border: 3px solid #40BFFF;">
+        <div style="text-align:right;">
+          <button onclick="closeHelp4()" style="font-size:1.2em;">✖</button>
+        </div>
+        <h2 style="margin:0 0 8px 0; text-align:center;">更多</h2>
+        <ul>
+          <li style="font-size:22px; line-height:1.6; max-width:20em; word-break:break-all;">
+            按下更多會引導到課程地圖網並且可以再點選各學院詳細內容
+          </li>
+        </ul>
+        <video controls style="width:100%;max-width:500px;margin-top:24px;">
+          <source src="video/4.mp4" type="video/mp4">
+        </video>
+        <div style="display: flex; justify-content: space-between; margin-top:16px;">
+          <button onclick="showHelpPage3()">◀ 上一頁</button>
+          <button onclick="showHelpPage5()">下一頁 ▶</button>
+        </div>
+      </div>
+
+      <div id="helpBox5" style="display:none; position:fixed; left:50%; top:50%; transform:translate(-50%,-50%);
+  background:#fff; padding:18px 10px; border-radius:16px; box-shadow:0 4px 28px #0003;
+  z-index:9999; min-width:300px; max-width:90vw; color:#222; border: 3px solid #40BFFF;">
+        <div style="text-align:right;">
+          <button onclick="closeHelp5()" style="font-size:1.2em;">✖</button>
+        </div>
+        <h2 style="margin:0 0 8px 0; text-align:center;">選擇要前往的學院+系所</h2>
+        <ul>
+          <li style="font-size:22px; line-height:1.6; max-width:20em; word-break:break-all;">
+            按下Selcet map 選擇要去的學院再選擇要前往的系所，就會有最短路徑的指引路線
+          </li>
+        </ul>
+        <video controls style="width:100%;max-width:500px;margin-top:24px;">
+          <source src="video/5.mp4" type="video/mp4">
+        </video>
+        <div style="display: flex; justify-content: space-between; margin-top:16px;">
+          <button onclick="showHelpPage4()">◀ 上一頁</button>
+          <button onclick="showHelpPage6()">下一頁 ▶</button>
+        </div>
+      </div>
+
+      <div id="helpBox6" style="display:none; position:fixed; left:50%; top:50%; transform:translate(-50%,-50%);
+  background:#fff; padding:18px 10px; border-radius:16px; box-shadow:0 4px 28px #0003;
+  z-index:9999; min-width:300px; max-width:90vw; color:#222; border: 3px solid #40BFFF;">
+        <div style="text-align:right;">
+          <button onclick="closeHelp6()" style="font-size:1.2em;">✖</button>
+        </div>
+        <h2 style="margin:0 0 8px 0; text-align:center;">出發</h2>
+        <ul>
+          <li style="font-size:22px; line-height:1.6; max-width:20em; word-break:break-all;">
+            按下➡️鍵就會出發前往目的地到達目的地就會立即停止
+          </li>
+        </ul>
+        <video controls style="width:100%;max-width:500px;margin-top:24px;">
+          <source src="video/6.mp4" type="video/mp4">
+        </video>
+        <div style="display: flex; justify-content: space-between; margin-top:16px;">
+          <button onclick="showHelpPage5()">◀ 上一頁</button>
+          <button onclick="showHelpPage7()">下一頁 ▶</button>
+        </div>
+      </div>
+
+      <div id="helpBox7" style="display:none; position:fixed; left:50%; top:50%; transform:translate(-50%,-50%);
+  background:#fff; padding:18px 10px; border-radius:16px; box-shadow:0 4px 28px #0003;
+  z-index:9999; min-width:300px; max-width:90vw; color:#222; border: 3px solid #40BFFF;">
+        <div style="text-align:right;">
+          <button onclick="closeHelp7()" style="font-size:1.2em;">✖</button>
+        </div>
+        <h2 style="margin:0 0 8px 0; text-align:center;">選擇其他目的地</h2>
+        <ul>
+          <li style="font-size:22px; line-height:1; max-width:20em; word-break:break-all;">
+            你可以在車子停止後選擇其他目的地並且搭配🛑鍵做停止的動作(勿在車子停止前)變更目的地
+          </li>
+        </ul>
+        <video controls style="width:100%;max-width:500px;margin-top:24px;">
+          <source src="video/7.mp4" type="video/mp4">
+        </video>
+        <div style="display: flex; justify-content: space-between; margin-top:16px;">
+          <button onclick="showHelpPage6()">◀ 上一頁</button>
+          <button onclick="showHelpPage8()">下一頁 ▶</button>
+        </div>
+      </div>
+
+      <div id="helpBox8" style="display:none; position:fixed; left:50%; top:50%; transform:translate(-50%,-50%);
+  background:#fff; padding:18px 10px; border-radius:16px; box-shadow:0 4px 28px #0003;
+  z-index:9999; min-width:300px; max-width:90vw; color:#222; border: 3px solid #40BFFF;">
+        <div style="text-align:right;">
+          <button onclick="closeHelp8()" style="font-size:1.2em;">✖</button>
+        </div>
+        <h2 style="margin:0 0 8px 0; text-align:center;">搜尋教室</h2>
+        <ul>
+          <li style="font-size:22px; line-height:1; max-width:20em; word-break:break-all;">
+            如果你只知道教室名字但不知道位置在哪，就可以用
+            搜尋教室的功能，只需要打上教室名字，再按下導航
+            就會馬上幫你模擬路徑並找到建築位置
+          </li>
+        </ul>
+
+        <video controls style="width:100%;max-width:500px;margin-top:24px;">
+          <source src="video/8.mp4" type="video/mp4">
+        </video>
+        <div style="display: flex; justify-content: space-between; margin-top:16px;">
+          <button onclick="showHelpPage7()">◀ 上一頁</button>
+        </div>
+      </div>
+
+
+      
+
+      <div class="more-menu-wrap" style="position:relative;">
+        <a href="#">系院介紹</a>
+        <div id="moreMenu">
+          <a href="#" style="display:block; padding:8px;" onclick="toggleSubMenu(event)">⚙️工程學院 ▶ </a>
+          <div id="engSubMenu"
+            style="display:none; position:absolute; left:100%; top:0; background:#fff; border:1px solid #ccc; min-width:140px; color:#222;">
+            <a href="https://csie.yuntech.edu.tw/" target="_blank"
+              style="display:block; padding:8px; color:#222;">資訊工程系</a>
+            <a href="https://uel.yuntech.edu.tw/" target="_blank"
+              style="display:block; padding:8px; color:#222;">電子工程系</a>
+            <a href="https://uee.yuntech.edu.tw/" target="_blank"
+              style="display:block; padding:8px; color:#222;">電機工程系</a>
+            <a href="https://me.yuntech.edu.tw/" target="_blank"
+              style="display:block; padding:8px; color:#222;">機械工程系</a>
+            <a href="https://ce.yuntech.edu.tw/" target="_blank"
+              style="display:block; padding:8px; color:#222;">營建工程系</a>
+            <a href="https://che.yuntech.edu.tw/" target="_blank"
+              style="display:block; padding:8px; color:#222;">化學工程與材料工程系</a>
+            <a href="https://ues.yuntech.edu.tw/" target="_blank"
+              style="display:block; padding:8px; color:#222;">環境與安全衛生工程系</a>
+          </div>
+          <a href="#" style="display:block; padding:8px;" onclick="toggleDesignSubMenu(event)">🎨設計學院 ▶ </a>
+          <div id="designSubMenu"
+            style="display:none; position:absolute; left:100%; top:0; background:#fff; border:1px solid #ccc; min-width:140px; color:#222;">
+            <a href="https://id.yuntech.edu.tw/" target="_blank"
+              style="display:block; padding:8px; color:#222;">工業設計系</a>
+            <a href="https://vc.yuntech.edu.tw/" target="_blank"
+              style="display:block; padding:8px; color:#222;">視覺傳達設計系</a>
+            <a href="https://gcd.yuntech.edu.tw/" target="_blank"
+              style="display:block; padding:8px; color:#222;">數位媒體設計系</a>
+            <a href="https://cd.yuntech.edu.tw/" target="_blank"
+              style="display:block; padding:8px; color:#222;">創意生活設計系</a>
+            <a href="https://aid.yuntech.edu.tw/" target="_blank"
+              style="display:block; padding:8px; color:#222;">建築與室內設計系</a>
+            <a href="https://iid.yuntech.edu.tw/" target="_blank"
+              style="display:block; padding:8px; color:#222;">跨域整合設計學士學位學程&設計技優專班</a>
+
+          </div>
+          <a href="#" style="display:block; padding:8px;" onclick="toggleMangeSubMenu(event)">🪙管理學院 ▶</a>
+          <div id="mangeSubMenu"
+            style="display:none; position:absolute; left:100%; top:0; background:#fff; border:1px solid #ccc; min-width:140px; color:#222;">
+            <a href="https://uma.yuntech.edu.tw/" target="_blank"
+              style="display:block; padding:8px; color:#222;">會計系</a>
+            <a href="https://ba.yuntech.edu.tw/" target="_blank"
+              style="display:block; padding:8px; color:#222;">企業管理系</a>
+            <a href="https://umf.yuntech.edu.tw/index.html" target="_blank"
+              style="display:block; padding:8px; color:#222;">財務金融系</a>
+            <a href="https://www.mis.yuntech.edu.tw/" target="_blank"
+              style="display:block; padding:8px; color:#222;">資訊管理系</a>
+            <a href="https://www.iem.yuntech.edu.tw/" target="_blank"
+              style="display:block; padding:8px; color:#222;">工業工程與管理系</a>
+            <a href="https://ipm.yuntech.edu.tw/" target="_blank"
+              style="display:block; padding:8px; color:#222;">國際管理學士學位學程</a>
+          </div>
+          <a href="#" style="display:block; padding:8px;" onclick="toggleHasSubMenu(event)">🎓人文學院 ▶</a>
+          <div id="hasSubMenu"
+            style="display:none; position:absolute; left:100%; top:0; background:#fff; border:1px solid #ccc; min-width:140px; color:#222;">
+            <a href="https://www.dafl.yuntech.edu.tw/" target="_blank"
+              style="display:block; padding:8px; color:#222;">應用外語系</a>
+            <a href="https://culture.yuntech.edu.tw/chc/" target="_blank"
+              style="display:block; padding:8px; color:#222;">文化資產維護系</a>
+
+          </div>
+          <a href="#" style="display:block; padding:8px;" onclick="toggleFutSubMenu(event)">🤖未來學院 ▶</a>
+          <div id="futSubMenu"
+            style="display:none; position:absolute; left:100%; top:0; background:#fff; border:1px solid #ccc; min-width:140px; color:#222;">
+            <a href="https://bpis.yuntech.edu.tw/" target="_blank"
+              style="display:block; padding:8px; color:#222;">前瞻學士學位學程</a>
+            <a href="https://www.yuntechbpit.tw/" target="_blank"
+              style="display:block; padding:8px; color:#222;">產業科技學士學位學程</a>
+            <a href="https://irobot.yuntech.edu.tw/" target="_blank"
+              style="display:block; padding:8px; color:#222;">智慧機器人學士學位學程</a>
+            <a href="https://yuntech-uhx.jrbooks.com.tw:8080/index" target="_blank"
+              style="display:block; padding:8px; color:#222;">通識教育中心</a>
+          </div>
+        </div>
+      </div>
+      <div><a href="#" onclick="toggleShopMenu(event)">商店</a></div>
+      <div id="shopOverlay"></div>
+      <div id="shopMenu">
+        <div style="font-size: 1.5em; font-weight: bold; text-align: center; margin-bottom: 16px;color: black;">
+          歡迎光臨請選擇你的車輛
+        </div>
+        <img src="car.png" style="width:40px; height:60px; margin:8px;" onclick="selectCarImage('car.png')">
+        <img src="img/helicopter.png" style="width:40px; height:60px; margin:8px;"
+          onclick="selectCarImage('img/helicopter.png')">
+        <img src="img/boat.png" style="width:40px; height:60px; margin:8px;" onclick="selectCarImage('img/boat.png')">
+        <img src="img/race.png" style="width:40px; height:60px; margin:5px;" onclick="selectCarImage('img/race.png')">
+        <img src="img/F1.png" style="width:40px; height:60px; margin:5px;" onclick="selectCarImage('img/F1.png')">
+      </div>
+      <div><a href="https://webapp.yuntech.edu.tw/emap/mapping/College.html" target="_blank">更多</a></div>
+      <div class="menu-space"></div>
+    </div>
+
+    <div class="icon">
+      <a href="https://www.facebook.com/yuntech/?locale=zh_TW" target="_blank" rel="noopener noreferrer">
+        <i class="fa-brands fa-facebook" style="color: #ffffff;"></i>
+      </a>
+      <a href="https://www.youtube.com/user/YuntechVideo" target="_blank" rel="noopener noreferrer">
+        <i class="fa-brands fa-youtube" style="color: #ffffff;"></i>
+      </a>
+      <a href="https://www.instagram.com/yuntech.nyust/" target="_blank" rel="noopener noreferrer">
+        <i class="fa-brands fa-instagram" style="color: #ffffff;"></i>
+      </a>
+      <a href="https://www.yuntech.edu.tw" target="_blank" rel="noopener noreferrer">
+        <img src="img\noback.png" style="width: 40px; height: 40px;">
+      </a>
+    </div>
+
+  </nav>
+  <canvas id="myCanvas"></canvas>
+  <div id="controls">
+    <select id="mapSelect" onchange="onMapChange()">
+      <option value="">Select map</option>
+      <option value="map1">工程學院</option>
+      <option value="map2">設計學院</option>
+      <option value="map3">管理學院</option>
+      <option value="map4">人文學院</option>
+      <option value="map5">未來學院</option>
+      <option value="map6">宿舍區</option>
+      <option value="map7">運動區</option>
+      <option value="map8">行政單位</option>
+    </select>
+
+    <select id="subMapSelect" style="display:none; margin-left:10px;"></select>
+
+    <!-- <button onclick="dispose()">🗑️</button>
+    <button onclick="save()">💾</button>
+    <button onclick="cancel()">🧹</button>
+    <button onclick="store()">🧠</button> -->
+
+    <!-- <label for="fileInput" class="file-input-label">
+      📂
+      <input type="file" id="fileInput" accept=".world" onchange="load(event)" /> -->
+    </label>
+
+    <!-- <button onclick="openOsmPanel()">🌍</button>
+    <button id="targetBtn" onclick="setMode('target')">🎯</button> -->
+    <!-- <button id="btnCar" onclick="placeCar()">🚙</button> -->
+    <button id="offsets" onclick="dispOffsets()">➡️</button>
+    <button id="stopcar" onclick="stopcar()">🛑</button>
+
+    <p id="kpVal"></p>
+
+    <div id="osmPanel" style="display:none;">
+      <textarea id="osmDataContainer" rows="10" cols="50" placeholder="Paste OSM data here"></textarea>
+      <div>
+        <button onclick="parseOsmData()">✔️</button>
+        <button onclick="closeOsmPanel()">❌</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="texts">
+    <input type="text" id="destinationInput" placeholder="輸入教室名稱" />
+    <button onclick="navigateToDestination()">🔍 搜尋</button>
+  </div>
+
+  <div id="announcementOverlay" style="display:none;">
+  <div id="announcementBox">
+    <h2>📖 簡易使用說明</h2>
+    <div style="text-align: left; font-size:1.1em; color:#555; line-height:1.5;">
+      <p>第一步：請先使用【Select map】選擇目的地</p>
+      <p>第二步：再使用➡️按鈕，讓車輛移動</p>
+      <p>⚠️特別注意事項: </p>
+        <ol>
+        <li>車輛行進間若要更改目標請按🛑按鈕,讓車輛停止,在更改目的地</li>
+        <li>車輛行進間,視角無法自由移動</li>
+        <li>若車輛位於停止狀態,請按➡️按鈕讓車輛重新行駛</li>
+        <li>若沒照以上步驟操作使車輛死掉,請刷新網頁</li>
+      </ol>
+    </div>
+    <button onclick="closeAnnouncement()">我知道了</button>
+  </div>
+</div>
+  <script src="js/world.js"></script>
+  <script src="js/graphEditor.js"></script>
+  <script src="js/viewport.js"></script>
+  <script src="js/items/tree.js"></script>
+  <script src="js/items/building.js"></script>
+  <script src="js/items/water.js"></script>
+  <script src="js/items/Pitch.js"></script>
+  <script src="js/items/park.js"></script>
+  <script src="js/items/grass.js"></script>
+  <script src="js/items/court.js"></script>
+  <script src="js/math/utils.js"></script>
+  <script src="js/math/graph.js"></script>
+  <script src="js/math/osm.js"></script>
+  <script src="js/primitives/point.js"></script>
+  <script src="js/primitives/segment.js"></script>
+  <script src="js/primitives/polygon.js"></script>
+  <script src="js/primitives/envelope.js"></script>
+
+  <script src="controls.js"></script>
+  <script src="netPD.js"></script>
+  <script src="sensor.js"></script>
+  <script src="car.js"></script>
+  <script src="main.js"></script>
+
+  
+</body>
+
+</html>
+<script>
+  function openOsmPanel() {
+    osmPanel.style.display = "block";
+  }
+  function closeOsmPanel() {
+    osmPanel.style.display = "none";
+  }
+  function parseOsmData() {
+    if (osmDataContainer.values == "") {
+      alert("Paste data first");
+      return; ssssss
+    }
+    const res = Osm.parseRoads(JSON.parse(osmDataContainer.value));
+    graph.points = res.points;
+    graph.segments = res.segments;
+    closeOsmPanel();
+  }
+
+  function onMapChange() {
+    const mapSelect = document.getElementById('mapSelect');
+    const subMapSelect = document.getElementById('subMapSelect');
+    let options = '';
+    switch (mapSelect.value) {
+      case 'map8':
+        options = `
+        <option value="">請選擇行政單位</option>
+        <option value="AC">資訊中心</option>
+        <option value="AD">行政中心</option>
+        <option value="ART">藝術中心</option>
+        <option value="TL">圖書館</option>
+        <option value="AS">雲泰聽</option>
+        <option value="GA">學生活動中心</option>
+      `;
+        break;
+      case 'map1':
+        options = `
+        <option value="">請選擇系館</option>
+        <option value="EM">工程一館</option>
+        <option value="EL">工程二館</option>
+        <option value="ES">工程三館</option>
+        <option value="EC">工程四館</option>
+        <option value="EB">工程五館</option>
+        <option value="EN">工程六館</option>
+      `;
+        break;
+      case 'map2':
+        options = `
+        <option value="">請選擇系館</option>
+        <option value="DC1">設計一館</option>
+        <option value="DC2">設計二館</option>
+        <option value="DA">設計三館</option>
+      `;
+        break;
+      case 'map3':
+        options = `
+        <option value="">請選擇系館</option>
+        <option value="MA">管理一館</option>
+        <option value="MB">管理二館</option>
+        <option value="MD">管理三館</option>
+      `;
+        break;
+      case 'map4':
+        options = `
+        <option value="">請選擇系館</option>
+        <option value="DH">人文一館</option>
+        <option value="DS">人文二館</option>
+      `;
+        break;
+      case 'map5':
+        options = `
+        <option value="">請選擇系館</option>
+        <option value="FB">未來學院一館</option>
+        <option value="FB2">未來學院二館</option>
+      `;
+        break;
+      case 'map6':
+        options = `
+        <option value="">請選擇宿舍區域</option>
+        <option value="A">學生宿舍A區</option>
+        <option value="B">學生宿舍B區</option>
+        <option value="C">學生宿舍C區</option>
+        <option value="D">學生宿舍D區</option>
+        <option value="E">學生宿舍E區</option>
+        <option value="F">學生宿舍F區</option>
+        <option value="G">學生宿舍G區</option>
+      `;
+        break;
+      case 'map7':
+        options = `
+        <option value="">請選擇運動區域</option>
+        <option value="PD">體育館</option>
+        <option value="ASP">游泳館</option>
+        <option value="BK">籃球場</option>
+        <option value="VB">排球場</option>
+        <option value="BS">棒球場</option>
+        <option value="SR">溜冰場</option>
+        <option value="T">田徑場</option>
+        
+
+      `;
+        break;
+      default:
+        options = '';
+    }
+    if (options) {
+      subMapSelect.innerHTML = options;
+      subMapSelect.style.display = '';
+    } else {
+      subMapSelect.innerHTML = '';
+      subMapSelect.style.display = 'none';
+    }
+  }
+
+  // 定義地點對應的建築物名稱
+  const buildingMap = {
+    AC: "資訊中心",
+    AD: "行政中心",
+    ART: "藝術中心",
+    TL: "圖書館",
+    AS: "雲泰聽",
+    EM: "工程一館",
+    EL: "工程二館",
+    ES: "工程三館",
+    EC: "工程四館",
+    EB: "工程五館",
+    EN: "工程六館",
+    DC1: "設計一館",
+    DC2: "設計二館",
+    DA: "設計三館",
+    MA: "管理一館",
+    MB: "管理二館",
+    MD: "管理三館",
+    DH: "人文一館",
+    DS: "人文二館",
+    FB: "未來學院一館",
+    FB2: "未來學院二館",
+    A: "學生宿舍A區",
+    B: "學生宿舍B區",
+    C: "學生宿舍C區",
+    D: "學生宿舍D區",
+    E: "學生宿舍E區",
+    F: "學生宿舍F區",
+    G: "學生宿舍G區",
+    PD: "體育館",
+    ASP: "游泳館",
+    BK: "籃球場",
+    VB: "排球場",
+    BS: "棒球場",
+    SR: "溜冰場",
+    T: "田徑場",
+    GA:"學生活動中心"
+  };
+
+  // 定義導航功能
+  function navigateToDestination() {
+    const input = document.getElementById("destinationInput").value.trim().toUpperCase();
+    let buildingCodeRaw = input.match(/^[A-Z]+[0-9]*/); // 例如 FB205, DC1101, EB305 等
+
+    if (!buildingCodeRaw) {
+      alert("找不到目標地點，請確認輸入是否正確！");
+      return;
+    }
+
+    let buildingCode = buildingCodeRaw[0];
+    let floor = "未知樓層";
+
+    // 特殊建築碼前綴
+    const specialPrefixes = ["FB2", "DC1", "DC2"];
+    const isSpecial = specialPrefixes.some(prefix =>
+      buildingCode.startsWith(prefix) && input.length >= 6
+    );
+
+    if (isSpecial) {
+      buildingCode = buildingCode.substring(0, 3); // 特例建築取前三碼
+      if (input.length >= 4) {
+        floor = `${input[3]}樓`; // 特例樓層在第4個字元
+      }
+    } else {
+      // 一般建築物處理
+      buildingCode = buildingCode.match(/^[A-Z]+/)[0]; // 取字母部分
+      const numberPart = input.match(/[0-9]+/);
+      if (numberPart && numberPart[0].length >= 1) {
+        floor = `${numberPart[0][0]}樓`; // 標準樓層為數字第一位
+      }
+    }
+
+    if (buildingMap[buildingCode]) {
+      const buildingName = buildingMap[buildingCode];
+      alert(`導航至 ${buildingName}，地點：${input}，樓層：${floor}`);
+      simulateSelection(buildingCode);
+      triggerShortestPath(buildingCode);
+    } else {
+      alert("找不到目標地點，請確認輸入是否正確！");
+    }
+  }
+
+  // 模擬手動選擇的行為
+  function simulateSelection(buildingCode) {
+    const mapSelect = document.getElementById("mapSelect");
+    const subMapSelect = document.getElementById("subMapSelect");
+
+    // 根據建築物代碼選擇對應的學院
+    if (["EM", "EL", "ES", "EC", "EB", "EN"].includes(buildingCode)) {
+      mapSelect.value = "map1"; // 工程學院
+    } else if (["DC1", "DC2", "DA"].includes(buildingCode)) {
+      mapSelect.value = "map2"; // 設計學院
+    } else if (["MA", "MB", "MD"].includes(buildingCode)) {
+      mapSelect.value = "map3"; // 管理學院
+    } else if (["DH", "DS"].includes(buildingCode)) {
+      mapSelect.value = "map4"; // 人文學院
+    } else if (["FB", "FB2"].includes(buildingCode)) {
+      mapSelect.value = "map5"; // 未來學院
+    } else if (["A", "B", "C", "D", "E", "F"].includes(buildingCode)) {
+      mapSelect.value = "map6"; // 宿舍區
+    } else if (["PD", "ASP", "BK", "VB", "BS", "SR", "T"].includes(buildingCode)) {
+      mapSelect.value = "map7"; // 運動區
+    } else if (["AC", "AD", "ART", "TL", "AS","GA"].includes(buildingCode)) {
+      mapSelect.value = "map8"; // 行政單位
+    } else {
+      alert("無法匹配到對應的學院！");
+      return;
+    }
+
+    // 觸發學院選擇的變更事件，顯示子選單
+    onMapChange();
+
+    onMapChange();
+
+    // 根據建築物代碼選擇對應的子選單項目
+    subMapSelect.value = buildingCode;
+
+    // 觸發子選單的變更事件
+    subMapSelect.dispatchEvent(new Event("change"));
+
+
+  }
+
+  // 觸發最短路徑計算
+  function triggerShortestPath(buildingCode) {
+    // 假設有一個函數 `calculateShortestPath` 用於計算最短路徑
+    if (typeof calculateShortestPath === "function") {
+      calculateShortestPath(buildingCode);
+    } else {
+      console.error("最短路徑計算函數未定義！");
+    }
+  }
+  // function toggleMoreMenu(event) {
+  //   event.preventDefault();
+  //   event.stopPropagation();
+  //   const menu = document.getElementById('moreMenu');
+  //   menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+  //   document.addEventListener('click', function handler(e) {
+  //     if (!menu.contains(e.target) && e.target !== event.target) {
+  //       menu.style.display = 'none';
+  //       document.removeEventListener('click', handler);
+  //       document.getElementById('engSubMenu').style.display = 'none';
+  //       document.getElementById('designSubMenu').style.display = 'none';
+  //       document.getElementById('mangeSubMenu').style.display = 'none';
+  //     }
+  //   });
+  // }
+
+  function toggleMangeSubMenu(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    const submenu = document.getElementById('mangeSubMenu');
+    // 先關閉其他子選單
+    document.getElementById('engSubMenu').style.display = 'none';
+    document.getElementById('designSubMenu').style.display = 'none';
+    document.getElementById('hasSubMenu').style.display = 'none';
+    document.getElementById('futSubMenu').style.display = 'none';
+    // 切換自己
+    submenu.style.display = (submenu.style.display === 'block') ? 'none' : 'block';
+
+    document.addEventListener('click', function handler(e) {
+      if (!submenu.contains(e.target) && e.target !== event.target) {
+        submenu.style.display = 'none';
+        document.removeEventListener('click', handler);
+      }
+    });
+  }
+
+  function toggleDesignSubMenu(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    const submenu = document.getElementById('designSubMenu');
+    // 先關閉所有子選單
+    document.getElementById('engSubMenu').style.display = 'none';
+    document.getElementById('mangeSubMenu').style.display = 'none';
+    document.getElementById('hasSubMenu').style.display = 'none';
+    document.getElementById('futSubMenu').style.display = 'none';
+    // 切換自己
+    submenu.style.display = (submenu.style.display === 'block') ? 'none' : 'block';
+
+    document.addEventListener('click', function handler(e) {
+      if (!submenu.contains(e.target) && e.target !== event.target) {
+        submenu.style.display = 'none';
+        document.removeEventListener('click', handler);
+      }
+    });
+  }
+
+  function toggleSubMenu(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    const submenu = document.getElementById('engSubMenu');
+    // 先關閉其他子選單
+    document.getElementById('designSubMenu').style.display = 'none';
+    document.getElementById('mangeSubMenu').style.display = 'none';
+    document.getElementById('hasSubMenu').style.display = 'none';
+    document.getElementById('futSubMenu').style.display = 'none';
+    // 切換自己
+    submenu.style.display = (submenu.style.display === 'block') ? 'none' : 'block';
+
+    document.addEventListener('click', function handler(e) {
+      if (!submenu.contains(e.target) && e.target !== event.target) {
+        submenu.style.display = 'none';
+        document.removeEventListener('click', handler);
+      }
+    });
+  }
+
+  function toggleHasSubMenu(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    const submenu = document.getElementById('hasSubMenu');
+    // 先關閉其他子選單
+    document.getElementById('engSubMenu').style.display = 'none';
+    document.getElementById('designSubMenu').style.display = 'none';
+    document.getElementById('mangeSubMenu').style.display = 'none';
+    document.getElementById('futSubMenu').style.display = 'none';
+    // 切換自己
+    submenu.style.display = (submenu.style.display === 'block') ? 'none' : 'block';
+    document.addEventListener('click', function handler(e) {
+      if (!submenu.contains(e.target) && e.target !== event.target) {
+        submenu.style.display = 'none';
+        document.removeEventListener('click', handler);
+      }
+    });
+  }
+
+  function toggleFutSubMenu(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    const submenu = document.getElementById('futSubMenu');
+    // 先關閉其他子選單
+    document.getElementById('engSubMenu').style.display = 'none';
+    document.getElementById('designSubMenu').style.display = 'none';
+    document.getElementById('mangeSubMenu').style.display = 'none';
+    document.getElementById('hasSubMenu').style.display = 'none';
+    // 切換自己
+    submenu.style.display = (submenu.style.display === 'block') ? 'none' : 'block';
+    document.addEventListener('click', function handler(e) {
+      if (!submenu.contains(e.target) && e.target !== event.target) {
+        submenu.style.display = 'none';
+        document.removeEventListener('click', handler);
+      }
+    });
+  }
+
+  function toggleShopMenu(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    const menu = document.getElementById('shopMenu');
+    const overlay = document.getElementById('shopOverlay');
+    const show = menu.style.display !== 'block';
+    menu.style.display = show ? 'block' : 'none';
+    overlay.style.display = show ? 'block' : 'none';
+
+    // 先移除舊的監聽，避免重複
+    overlay.onclick = null;
+
+    if (show) {
+      // 點擊遮罩時關閉
+      overlay.onclick = function () {
+        menu.style.display = 'none';
+        overlay.style.display = 'none';
+      };
+      // 點擊方框內部不關閉
+      menu.onclick = function (e) {
+        e.stopPropagation();
+      };
+    }
+  }
+
+  function selectCarImage(src) {
+    if (window.myCar) {
+      window.myCar.img.src = src;
+      console.log(window.myCar.img.src)
+
+      const maskCtx = myCar.mask.getContext("2d");
+      myCar.img.onload = () => {
+        maskCtx.clearRect(0, 0, myCar.width, myCar.height);
+        maskCtx.fillStyle = myCar.color || "blue";
+        maskCtx.rect(0, 0, myCar.width, myCar.height);
+        maskCtx.fill();
+        maskCtx.globalCompositeOperation = "destination-atop";
+        maskCtx.drawImage(myCar.img, 0, 0, myCar.width, myCar.height);
+        if (typeof animate === "function") animate();
+      };
+    }
+    document.getElementById('shopMenu').style.display = 'none';
+    document.getElementById('shopOverlay').style.display = 'none';
+  }
+function openHelp(event) {
+    event.preventDefault();
+    document.getElementById('helpOverlay').style.display = 'block';
+    document.getElementById('helpBox').style.display = 'block';
+  }
+  function showHelpPage1() {
+    document.getElementById('helpBox2').style.display = 'none';
+    document.getElementById('helpBox').style.display = 'block';
+    document.getElementById('helpOverlay').style.zIndex = 9998;
+  }
+function closeHelp() {
+  document.getElementById('helpOverlay').style.display = 'none';
+  document.getElementById('helpBox').style.display = 'none';
+}
+function showHelpPage2() {
+  document.getElementById('helpBox').style.display = 'none';
+  document.getElementById('helpBox3').style.display = 'none'; 
+  document.getElementById('helpBox2').style.display = 'block';
+  document.getElementById('helpOverlay').style.zIndex = 9998;
+}
+function closeHelp2() {
+  document.getElementById('helpOverlay').style.display = 'none';
+  document.getElementById('helpBox2').style.display = 'none';
+}
+function showHelpPage3() {
+  document.getElementById('helpBox2').style.display = 'none';
+  document.getElementById('helpBox4').style.display = 'none'; 
+  document.getElementById('helpBox3').style.display = 'block';
+  document.getElementById('helpOverlay').style.zIndex = 9998;
+}
+function closeHelp3() {
+  document.getElementById('helpOverlay').style.display = 'none';
+  document.getElementById('helpBox3').style.display = 'none';
+}
+function showHelpPage4() {
+  document.getElementById('helpBox3').style.display = 'none';
+  document.getElementById('helpBox5').style.display = 'none'; 
+  document.getElementById('helpBox4').style.display = 'block';
+  document.getElementById('helpOverlay').style.zIndex = 9998;
+}
+function closeHelp4() {
+  document.getElementById('helpOverlay').style.display = 'none';
+  document.getElementById('helpBox4').style.display = 'none';
+}
+function showHelpPage5() {
+  document.getElementById('helpBox4').style.display = 'none';
+  document.getElementById('helpBox6').style.display = 'none';
+  document.getElementById('helpBox5').style.display = 'block';
+  document.getElementById('helpOverlay').style.zIndex = 9998;
+}
+function closeHelp5() {
+  document.getElementById('helpOverlay').style.display = 'none';
+  document.getElementById('helpBox5').style.display = 'none';
+}
+function showHelpPage6() {
+  document.getElementById('helpBox5').style.display = 'none';
+  document.getElementById('helpBox7').style.display = 'none'; 
+  document.getElementById('helpBox6').style.display = 'block';
+  document.getElementById('helpOverlay').style.zIndex = 9998;
+}
+function closeHelp6() {
+  document.getElementById('helpOverlay').style.display = 'none';
+  document.getElementById('helpBox6').style.display = 'none';
+}
+function showHelpPage7() {
+  document.getElementById('helpBox6').style.display = 'none';
+  document.getElementById('helpBox8').style.display = 'none';
+  document.getElementById('helpBox7').style.display = 'block';
+  document.getElementById('helpOverlay').style.zIndex = 9998;
+}
+function closeHelp7() {
+  document.getElementById('helpOverlay').style.display = 'none';
+  document.getElementById('helpBox7').style.display = 'none';
+}
+function showHelpPage8() {
+  document.getElementById('helpBox7').style.display = 'none';
+  document.getElementById('helpBox8').style.display = 'block';
+  document.getElementById('helpOverlay').style.zIndex = 9998;
+}
+function closeHelp8() {
+  document.getElementById('helpOverlay').style.display = 'none';
+  document.getElementById('helpBox8').style.display = 'none';
+}
+
+function showAnnouncement() {
+  document.getElementById('announcementOverlay').style.display = 'flex';
+}
+
+function closeAnnouncement() {
+  document.getElementById('announcementOverlay').style.display = 'none';
+}
+
+window.onload = function() {
+  showAnnouncement();
+};
+
+</script>
